@@ -16,14 +16,17 @@ Thank you.
 This library implements the Ball and Chain algorithm in python.  It comes with some utilities to help you build your Ball and Chain instance.  It also comes with documentation on the inner workings of the algorithm and the library.
 
 You can use the documentation to learn about how it all works.
+
 	* docs (folder)
 
 You can use the utils to build your instance
+
 	* interactive-generate.py
 	* server.py
 	* openbac.conf
 
 You can import the library into your application to string it all together.
+
 	* openbac.py
 
 
