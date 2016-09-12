@@ -23,3 +23,4 @@ But in both these situations the password's security is not linked to the comple
 With Ball and Chain, you can use simple easy to remember passwords.  Which means you users will have no trouble changing them every 30 days or so.  It also means your users won't be writing them down, or using the same password for every site.
 
 Your new, relaxed password policy is going to be a good thing.  I promise.
+
