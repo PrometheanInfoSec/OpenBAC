@@ -41,6 +41,6 @@ Ball and Chain is an entirely new paradigm.  Without going into the details of t
 
 Now doesn't that sound great?
 
-Dig deeper in the documentation if you want more of an explanation as to how it all works under the hood.  Or simply contact me on Twitter [@zaeyx](https://twitter.com/zeyx).
+Dig deeper in the documentation if you want more of an explanation as to how it all works under the hood.  Or simply contact me on Twitter [@zaeyx](https://twitter.com/zaeyx).
 
 
