@@ -53,8 +53,6 @@ class openbac_server:
 			print "Please attempt to fix them and restart this program"
 			exit()
 
-		self._serve()	
-	
 		
 		if not os.path.exists(self.config["certfile"]) or not os.path.exists(self.config["keyfile"]):
 			if not args.no_cert_gen:
@@ -65,6 +63,8 @@ class openbac_server:
 				print "Exiting..."
 				exit()
 			
+		print "\n\n#################\nListening..."
+		self._serve()
 
 	def check_platform(self):
 		if os.name != "posix":
