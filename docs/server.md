@@ -7,7 +7,9 @@ One of the utilities included with this library is the openbac server (server.py
 ###Configuration
 All of the configuration is accomplished inside the file openbac.conf.  There is decent commenting inside the file to help you figure out what all you need to change.  But you really shouldn't have to change much of anything at all.
 
-The only thing that may need configuring is the pointerlengths setting.  This will change when you generate a new array and must be mapped to relate to the size of the array.
+There are two things that may need configuring. The first is the pointerlengths setting.  This will change when you generate a new array and must be mapped to relate to the size of the array.  The second is the whitelist.  Server.py only accepts connections from approved hosts.  Best case scenario, you are just running server.py on the same machine as your web application, over the loopback interface, and your whitelist reads "127.0.0.1".
+
+
 
 ###API
 
