@@ -20,6 +20,8 @@ CONFIGFILE = "openbac.conf"
 
 m = ''
 
+whitelist = []
+
 class openbac_server:
 	config = {}
 
@@ -34,11 +36,11 @@ class openbac_server:
 		if not args.no_platform:
 			self.check_platform()
 
-		try:
-			self._parse_conf()
-		except:
-			print "An error has occured while attempting to parse the configuration file %s " % self.configfile
-			exit()
+		#try:
+		self._parse_conf()
+		#except:
+		#	print "An error has occured while attempting to parse the configuration file %s " % self.configfile
+		#	exit()
 
 		parsr_output = self._check_conf()
 		if len(parsr_output) > 0:
@@ -83,11 +85,11 @@ class openbac_server:
 				continue
 			self.config[line[0].strip()] = line[1].strip()
 
-		if "server_port" in self.config.keys():
+		if "server_port" in self.config.keys() and self.config['server_port'] != "default":
 			global PORT
 			PORT = self.config["server_port"]
 
-		if "server_addr" in self.config.keys():
+		if "server_addr" in self.config.keys() and self.config['server_addr'] != "default":
 			global HOST
 			HOST = self.config["server_addr"]
 
@@ -98,6 +100,13 @@ class openbac_server:
 				self.config['pointerlengths'].append(temp)
 		else:
 			self.config['pointerlengths'] = eval(self.config['pointerlengths'])
+		temp = self.config['whitelist']
+		self.config['whitelist'] = []
+		for i in temp.split(","):
+			self.config['whitelist'].append(i)
+		
+		global whitelist
+		whitelist += self.config['whitelist']
 
 		if not os.path.exists(self.config['arrayfile']):
 			print "It appears that you have not created an arrayfile yet."
@@ -175,6 +184,9 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
 	
 	def do_GET(self):
 		
+		if(self.client_address[0]) not in whitelist:
+			self.send_error(401, "No Access")
+
 		r = m.parse(self.path)
 		try:
 			resp = m.parse(self.path)
