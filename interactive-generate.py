@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-
+import subprocess
 
 class main():
 
@@ -77,6 +77,25 @@ class main():
 		while intval > 1:
 			fi.write(os.urandom(1024))
 			intval -= 1024
+		fi.close()
+
+		fi = open("openbac.conf","r")
+		data = fi.read()
+		fi.close()
+
+		temp = []
+		for line in data.split("\n"):
+			if line[0:3] == "poi" and "pointerlengths: " in line:
+				line = "pointerlengths: %s" % str(bytenum)
+			if line[0:3] == "arr" and "arrayfile: " in line:
+				line = "arrayfile: %s" % str(filename)
+
+			temp.append(line)
+
+		data = "\n".join(temp)
+
+		fi = open("openbac.conf","w")
+		fi.write(data)
 		fi.close()
 
 		print "Operation complete\n"
