@@ -53,7 +53,7 @@ class main():
 				bytenum = ""
 			if isinstance( bytenum, (int , long)) and bytenum > 10 and bytenum < 46:
 				print "key (bytes): %s, array: %s" % (bytenum, self.tosize(2**bytenum))
-				confirm = raw_input("Good? [Y/n]:")
+				confirm = raw_input("Good? [Y/n]:") or "y"
 				
 			elif bytenum == "exit":
 				print "exiting..."
