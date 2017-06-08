@@ -103,7 +103,7 @@ class openbac_server:
 		temp = self.config['whitelist']
 		self.config['whitelist'] = []
 		for i in temp.split(","):
-			self.config['whitelist'].append(i)
+			self.config['whitelist'].append(str(i).strip())
 		
 		global whitelist
 		whitelist += self.config['whitelist']
@@ -186,6 +186,7 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
 		
 		if(self.client_address[0]) not in whitelist:
 			self.send_error(401, "No Access")
+			return
 
 		r = m.parse(self.path)
 		try:
