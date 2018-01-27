@@ -50,6 +50,8 @@ class main():
 			try:
 				bytenum = int(bytenum)
 			except:
+				if bytenum in self.options:
+					self.options[bytenum][0]()
 				bytenum = ""
 			if isinstance( bytenum, (int , long)) and bytenum > 10 and bytenum < 46:
 				print "key (bytes): %s, array: %s" % (bytenum, self.tosize(2**bytenum))
